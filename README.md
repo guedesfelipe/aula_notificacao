@@ -4,17 +4,22 @@
 ---
 ### **Linux**
 
-1. Devemos criar nosso ambiente virtual, para isso execute o comando abaixo:
+1. Instalando a virtual env:
+    ~~~bash
+    sudo apt-get install python3-venv
+    ~~~
+
+2. Devemos criar nosso ambiente virtual, para isso execute o comando abaixo:
     ~~~bash
     python3 -m venv venv
     ~~~
 
-1. Agora devemos entrar em nosso ambiente virtual executando o comando abaixo:
+3. Agora devemos entrar em nosso ambiente virtual executando o comando abaixo:
     ~~~bash
     source venv/bin/activate
     ~~~
 
-1. Agora precisamos instalar dentro de nosso ambiente o pacote que enviará a notificação para o sistema operacional:
+4. Agora precisamos instalar dentro de nosso ambiente o pacote que enviará a notificação para o sistema operacional:
     ~~~bash
     pip install py-notifier
     ~~~
@@ -58,15 +63,15 @@
                 icon_path='<PATH>/aula_notificacao/icon/water-glass.png',
                 duration=10).send()
     ~~~
-    > :warning: troque no valor do `icon_path` o texto `<PATH>` para o path completo da sua máquina, para isso no linux você deve digitar o comando no terminal dentro da pasta do projeto que você baixou: `pwd` e colocar a saída no lugar deste texto. **WINDOWS** para descobrir o path do seu diretório execute `echo %cd%` e no **LINUX** `pwd`
+    > :warning: troque no valor do `icon_path` o texto `<PATH>` para o path completo da sua máquina, para isso no linux você deve digitar o comando no terminal dentro da pasta do projeto que você baixou: `pwd` e colocar a saída no lugar deste texto. **WINDOWS** para descobrir o path do seu diretório execute `echo %cd%` **deve ser trocada as barras `/` pelas barras `\`
 
-1. Agora vamos instalar a biblioteca para fazermos o agendamento deste script por um período de tempo:
+2. Agora vamos instalar a biblioteca para fazermos o agendamento deste script por um período de tempo:
    
    ~~~bash
     pip install schedule
    ~~~
 
-1. Após isto, para agendarmos o script de lembrete de água, devemos modificar um pouco nosso script com o código abaixo:
+3. Após isto, para agendarmos o script de lembrete de água, devemos modificar um pouco nosso script com o código abaixo:
     ~~~python
     import schedule
     from time import sleep
@@ -74,7 +79,7 @@
 
     def gera_notificacao():
         Notification(title='Lembrete',
-                description='Hidrate-se, beba água',
+                description='Hidrate-se, beba água!',
                 icon_path='<PATH>/aula_notificacao/icon/water-glass.png',
                 duration=10).send()
     
@@ -91,7 +96,7 @@
     ~~~
     > :warning: **LEMBRE-SE** de alterar a variável `PATH`
 
-1. Agora é só rodar o nosso script e aguardar a cada 30 segundos ele vai nos lembrar de beber água!
+4. Agora é só rodar o nosso script e aguardar a cada 30 segundos ele vai nos lembrar de beber água!
     ~~~bash
     python notificacao.py
     ~~~
